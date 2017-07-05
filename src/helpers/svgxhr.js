@@ -29,6 +29,13 @@ var svgXHR = function(options) {
     }
   }
 
+  if(!url.match(/^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/)) {
+    _fullPath = (baseUrl + '/' + url).replace(/([^:]\/)\/+/g, '$1');
+  }
+  else {
+    _fullPath = url.replace(/([^:]\/)\/+/g, '$1');
+  }
+
   _fullPath = (baseUrl + '/' + url).replace(/([^:]\/)\/+/g, '$1');
   _ajax.open('GET', _fullPath, true);
   _ajax.onprogress = function() {};
